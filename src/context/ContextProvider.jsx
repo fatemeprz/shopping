@@ -1,5 +1,4 @@
 import {
-  Children,
   createContext,
   useContext,
   useEffect,
@@ -14,7 +13,7 @@ function ContextProvider({ children }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        setProducts(await api.get("/users"));
+        setProducts(await api.get("/products"));
       } catch (error) {
         console.log(error.message);
       }
