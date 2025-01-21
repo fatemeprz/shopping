@@ -19,10 +19,10 @@ function Card({data}) {
           {price} $
         </span>
         <div className="flex justify-between items-center mt-10">
-          <Link to={`/products/${id}`} className="text-primary text-[22px] cursor-pointer hover:text-[#fe2d22] transition duration-400">
+          <Link to={`/products/${id}`} className="text-primary text-[22px] cursor-pointer hover:text-hover transition duration-400">
             <TbListDetails />
           </Link>
-          <Link to="/checkout" className="text-white p-1 rounded-xl bg-primary text-[22px] cursor-pointer hover:bg-[#fe2d22] transition duration-400">
+          <Link to="/checkout" className="text-white p-1 rounded-xl bg-primary text-[22px] cursor-pointer hover:bg-hover transition duration-400">
             <TbShoppingBagCheck />
           </Link>
         </div>

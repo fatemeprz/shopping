@@ -1,4 +1,6 @@
 import Card from "../components/Card";
+import CategoryList from "../components/CategoryList";
+import Search from "../components/Search";
 import { useProducts } from "../context/ContextProvider";
 import { RotatingLines } from "react-loader-spinner";
 
@@ -6,8 +8,10 @@ import { RotatingLines } from "react-loader-spinner";
 function ProductsPage() {
   const products=useProducts()
   return (
-    <div className="flex flex-col-reverse">
     <>
+    <Search/>
+    <div className="flex flex-col-reverse">
+    
       {!products.length ? (
             <div className=" flex justify-center items-center h-screen">
           <RotatingLines
@@ -20,16 +24,17 @@ function ProductsPage() {
           />
         </div>
       ) : (
-        <div className="flex justify-around flex-wrap gap-3 xl:justify-between ">
+        <div className="flex justify-evenly md:justify-between flex-wrap gap-2">
           {products.map((product) => (
             <Card key={product.id} data={product}/>
           ))}
         </div>
       )}
-    </>
+   
       
-      <div>Sidebar</div>
+      <div><CategoryList/></div>
     </div>
+    </>
 
   );
 }
