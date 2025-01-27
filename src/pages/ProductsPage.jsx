@@ -11,21 +11,13 @@ function ProductsPage() {
 
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState([]);
-  const [query, setQuery] = useState({category:"all"});
+  const [query, setQuery] = useState({ category: "all" });
   useEffect(() => {
     setDisplay(products);
   }, [products]);
   useEffect(() => {
-    if (!search) setDisplay(products);
-    if (query.category) {
-      const filterProducts = filterByCategory(query.category, products);
-      setDisplay(filterProducts);
-    }
-
     let filterProducts = filterByName(search, products);
-    if (query.category) {
-      filterProducts = filterByCategory(query.category, filterProducts);
-    }
+    filterProducts = filterByCategory(query.category, filterProducts);
     console.log(query);
     setDisplay(filterProducts);
   }, [query]);

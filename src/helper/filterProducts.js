@@ -1,13 +1,14 @@
-const filterByName=(name,product)=>{
-    const filteredProducts= product.filter(p=>
+const filterByName=(name,products)=>{
+   if (!name) return products
+    const filteredProducts= products.filter(p=>
         p.title.toLowerCase().includes(name.toLowerCase())
      )
      return filteredProducts
   }
 
-  const filterByCategory=(category,product)=>{
-   if (category==="all") return product
-    const filteredProducts= product.filter(p=>
+  const filterByCategory=(category,products)=>{
+   if (category==="all") return products
+    const filteredProducts= products.filter(p=>
        p.category.toLowerCase()===category
      )
      return filteredProducts
