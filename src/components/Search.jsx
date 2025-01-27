@@ -3,7 +3,7 @@ import { useState } from "react";
 function Search({ data:{search,setSearch},query:{query,setQuery}}) {
 
   const searchHandler = (e) => {
-    setSearch(e.target.value)
+    setSearch(e.target.value.toLowerCase().trimStart())
     setQuery(query=>({...query,search}))
     
   };

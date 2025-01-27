@@ -11,7 +11,7 @@ function ProductsPage() {
 
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState([]);
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState({category:"all"});
   useEffect(() => {
     setDisplay(products);
   }, [products]);
