@@ -3,3 +3,9 @@
 @tailwind utilities;
 
 
+.category-selected{
+    @apply bg-primary hover:bg-hover
+}
+.category-notselected{
+    @apply bg-white
+}

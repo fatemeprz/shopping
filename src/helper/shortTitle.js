@@ -3,4 +3,6 @@ const shortTitle=(title)=>{
    return shortenTitle
 }
 
-export default shortTitle
+
+
+export  {shortTitle}

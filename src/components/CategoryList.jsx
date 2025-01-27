@@ -1,13 +1,32 @@
+import categories from "../constant/list";
 
+function CategoryList({ query: { query, setQuery } }) {
+  const categoryHandler = (e) => {
+    console.dir(e.target.childNodes);
+    const { tagName } = e.target;
+    if (tagName !== "LI") return;
 
-function CategoryList() {
+    const category = e.target.innerText.toLowerCase();
+    setQuery((query) => ({ ...query, category }));
+  };
   return (
-    <ul className="flex flex-wrap *:mr-4 *:px-4 *:py-1 *:mb-3  *:rounded-2xl  *:border *:border-primary *:border-dashed *:text-sm *:cursor-pointer">
-      <li className="hover:bg-hover bg-primary ">All</li>
-      <li className="hover:bg-hover">Electronics</li>
-      <li className="hover:bg-hover">Jewelery</li>
-      <li className="hover:bg-hover">Men's Clothing</li>
-      <li className="hover:bg-hover">Women's Clothing</li>
+    <ul
+      onClick={categoryHandler}
+      className="flex flex-wrap *:mr-4 *:px-4 *:py-1 *:mb-3  *:rounded-2xl  *:border *:border-primary *:border-dashed *:text-sm *:cursor-pointer"
+    >
+      {categories.map((item) => (
+        <li
+          className={`
+            ${
+              item.type.toLowerCase() === query.category
+                ? "category-selected"
+                : null
+            } hover:bg-primary`}
+          key={item.id}
+        >
+          {item.type}
+        </li>
+      ))}
     </ul>
   );
 }

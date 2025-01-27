@@ -1,4 +1,4 @@
-import shortTitle from "../helper/shortTitle";
+import {shortTitle} from "../helper/shortTitle";
 import { TbListDetails } from "react-icons/tb";
 import { TbShoppingBagCheck } from "react-icons/tb";
 import { Link } from "react-router-dom";
