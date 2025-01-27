@@ -36,7 +36,7 @@ function ProductsPage() {
             />
           </div>
         ) : (
-          <div className="flex justify-around  flex-wrap gap-2">
+          <div className="grid-cols-[65%] justify-center grid sm:grid-cols-auto-fit-240 sm:grid-rows-auto-fit-385 gap-x-5">
             {display.map((product) => (
               <Card key={product.id} data={product} />
             ))}
