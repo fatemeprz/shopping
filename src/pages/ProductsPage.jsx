@@ -5,17 +5,20 @@ import { useProducts } from "../context/ContextProvider";
 import { RotatingLines } from "react-loader-spinner";
 import { useEffect, useState } from "react";
 import { filterByCategory, filterByName } from "../helper/filterProducts";
+import { useSearchParams } from "react-router-dom";
 
 function ProductsPage() {
   const products = useProducts();
 
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState([]);
-  const [query, setQuery] = useState({ category: "all" });
+  const [query, setQuery] = useState({});
+  const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     setDisplay(products);
   }, [products]);
   useEffect(() => {
+    setSearchParams(query);
     let filterProducts = filterByName(search, products);
     filterProducts = filterByCategory(query.category, filterProducts);
     console.log(query);
@@ -23,7 +26,7 @@ function ProductsPage() {
   }, [query]);
   return (
     <>
-      <Search data={{ search, setSearch }} query={{ query, setQuery }} />
+      <Search data={{ search, setSearch }} query={query} setQuery={setQuery} />
       <div className="flex flex-col-reverse">
         {!display.length ? (
           <div className=" flex justify-center items-center h-screen">
@@ -36,7 +39,7 @@ function ProductsPage() {
             />
           </div>
         ) : (
-          <div className="grid-cols-[65%] justify-center grid sm:grid-cols-auto-fit-240 sm:grid-rows-auto-fit-385 gap-x-5">
+          <div className="grid-cols-[65%] justify-center grid sm:grid-cols-auto-fill-240 sm:grid-rows-auto-fit-385 gap-x-5">
             {display.map((product) => (
               <Card key={product.id} data={product} />
             ))}
@@ -44,7 +47,7 @@ function ProductsPage() {
         )}
 
         <div>
-          <CategoryList query={{ query, setQuery }} />
+          <CategoryList query={query} setQuery={setQuery} />
         </div>
       </div>
     </>

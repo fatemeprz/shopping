@@ -7,7 +7,7 @@ const filterByName=(name,products)=>{
   }
 
   const filterByCategory=(category,products)=>{
-   if (category==="all") return products
+   if (!category) return products
     const filteredProducts= products.filter(p=>
        p.category.toLowerCase()===category
      )

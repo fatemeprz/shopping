@@ -1,13 +1,15 @@
 import categories from "../constant/list";
+import { createQueryObject } from "../helper/createQueryObject";
 
-function CategoryList({ query: { query, setQuery } }) {
+function CategoryList( { query, setQuery }) {
   const categoryHandler = (e) => {
     console.dir(e.target.childNodes);
     const { tagName } = e.target;
     if (tagName !== "LI") return;
 
     const category = e.target.innerText.toLowerCase();
-    setQuery((query) => ({ ...query, category }));
+    setQuery((query) => createQueryObject(query,{category}));
+    
   };
   return (
     <ul
@@ -18,10 +20,11 @@ function CategoryList({ query: { query, setQuery } }) {
         <li
           className={`
             ${
-              item.type.toLowerCase() === query.category
+              item.type.toLowerCase() === (query.category || "all")
                 ? "category-selected"
                 : null
-            } hover:bg-primary`}
+            } hover:bg-primary`
+          }
           key={item.id}
         >
           {item.type}
