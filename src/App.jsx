@@ -1,15 +1,15 @@
-import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProductsPage from "./pages/ProductsPage";
 import DetailsPage from "./pages/DetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import PageNotFound from "./pages/404";
-import ContextProvider from "./context/ContextProvider";
-
+import ProductProvider from "./context/ProductProvider";
+import Layout from "./layout/Layout";
 
 function App() {
   return (
-    <ContextProvider>
+    <Layout>
+    <ProductProvider>
       <Routes>
         <Route index element={<Navigate to="/products" replace />} />
         <Route path="/products" element={<ProductsPage />} />
@@ -17,8 +17,8 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      </ContextProvider>
-    
+    </ProductProvider>
+    </Layout>
   );
 }
 

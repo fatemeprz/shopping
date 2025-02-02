@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import CategoryList from "../components/CategoryList";
 import Search from "../components/Search";
-import { useProducts } from "../context/ContextProvider";
+import { useProducts } from "../context/ProductProvider";
 import { RotatingLines } from "react-loader-spinner";
 import { useEffect, useState } from "react";
 import { filterByCategory, filterByName } from "../helper/filterProducts";
