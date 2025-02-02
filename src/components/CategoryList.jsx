@@ -3,7 +3,7 @@ import { createQueryObject } from "../helper/createQueryObject";
 
 function CategoryList( { query, setQuery }) {
   const categoryHandler = (e) => {
-    console.dir(e.target.childNodes);
+    
     const { tagName } = e.target;
     if (tagName !== "LI") return;
 

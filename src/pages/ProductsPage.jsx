@@ -6,6 +6,7 @@ import { RotatingLines } from "react-loader-spinner";
 import { useEffect, useState } from "react";
 import { filterByCategory, filterByName } from "../helper/filterProducts";
 import { useSearchParams } from "react-router-dom";
+import { getInitialQuery } from "../helper/getInitialQuery";
 
 function ProductsPage() {
   const products = useProducts();
@@ -16,9 +17,11 @@ function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     setDisplay(products);
+    setQuery(getInitialQuery(searchParams));
   }, [products]);
   useEffect(() => {
     setSearchParams(query);
+    if (query.search) setSearch(query.search)
     let filterProducts = filterByName(search, products);
     filterProducts = filterByCategory(query.category, filterProducts);
     console.log(query);
